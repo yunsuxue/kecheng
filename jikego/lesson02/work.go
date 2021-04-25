@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"lession02/dao"
 	"log"
 )
@@ -14,5 +15,6 @@ func main() {
 
 	if ok {
 		//...
+		fmt.Println("db ok")
 	}
 }
