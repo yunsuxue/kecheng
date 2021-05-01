@@ -39,8 +39,9 @@ func main() {
 
 	g.Go(func() error {
 		mux := http.NewServeMux()
-		mux.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("pong01"))
+		mux.HandleFunc("/shutdown", func(w http.ResponseWriter, r *http.Request) {
+			cancel()
+			w.Write([]byte("shutdown01"))
 		})
 		httpServer01 = &http.Server{
 			Handler:      mux,
@@ -56,8 +57,9 @@ func main() {
 
 	g.Go(func() error {
 		mux := http.NewServeMux()
-		mux.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("pong02"))
+		mux.HandleFunc("/shutdown/trigger", func(w http.ResponseWriter, r *http.Request) {
+			cancel()
+			w.Write([]byte("shutdown02"))
 		})
 		httpServer02 = &http.Server{
 			Handler:      mux,
