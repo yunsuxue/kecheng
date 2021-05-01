@@ -22,6 +22,15 @@ import (
 https://mp.weixin.qq.com/s/B9F1Ta0QWJZNpkzq8URGRQ
 https://gist.github.com/akhenakh/38dbfea70dc36964e23acc19777f3869
 https://lailin.xyz/post/go-training-week3-errgroup.html **
+
+https://kaisawind.gitee.io/2019/10/16/2019-10-15-golang-errgroup/
+1. errCtx.Done()和group.Wait()会阻塞
+2. cancel函数会触发errCtx.Done()，但协程不会停止
+3. cancel只能cancel一次，第二次没有效果
+4. 全协程退出后，会触发group.Wait()
+5. group.Wait()的返回错误，只会有最近一次错误
+6. cancel和errCtx.Done()只能在group.Go中有效
+
 */
 var (
 	httpServer01 *http.Server
